@@ -40,3 +40,38 @@ List<Map> usersDetails = [
     "usersName": "Olivia james",
   },
 ];
+
+//Teacher Reviews
+List<Map> teacherReviews = [
+  {
+    "image": "assets/crasoul1.jpg",
+    "Acadmyname": "City School",
+    "Review": "Lorem ipsum dolor sit amet,consectetur",
+    "Reviewersname": "Jhon Smith",
+    "Date": "Mar 07 2020",
+
+  },
+  {
+    "image": "assets/crasoul2.jpg",
+    "Acadmyname": "City College",
+    "Review": "Lorem ipsum dolor sit amet,consectetur",
+    "Reviewersname": "Jhon Smith",
+    "Date": "Mar 07 2020",
+
+  },
+  {
+    "image": "assets/crasoul3.jpg",
+    "Acadmyname": "City Academy",
+    "Review": "Lorem ipsum dolor sit amet,consectetur",
+    "Reviewersname": "Jhon Smith",
+    "Date": "Mar 07 2020",
+  },
+  {
+    "image": "assets/crasoul4.jpg",
+    "Acadmyname": "City School",
+    "Review": "Lorem ipsum dolor sit amet,consectetur",
+    "Reviewersname": "Jhon Smith",
+    "Date": "Mar 07 2020",
+
+  },
+];

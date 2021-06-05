@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttergetxappsm/api/instituename.dart';
 import 'package:fluttergetxappsm/constans/constants.dart';
+import 'package:fluttergetxappsm/widgets/bottomnavbar.dart';
 import 'package:fluttergetxappsm/widgets/carousel.dart';
 import 'package:fluttergetxappsm/widgets/postes.dart';
 import 'package:fluttergetxappsm/widgets/widgets.dart';
@@ -44,6 +45,24 @@ class _HomePageState extends State<HomePage> {
         "Hi,jhon",
         "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       ),
+      bottomNavigationBar: FABBottomAppBar(
+       // onTabSelected: _selectedTab,
+
+        items: [
+          FABBottomAppBarItem(iconData: Icons.menu, text: 'This'),
+          FABBottomAppBarItem(iconData: Icons.layers, text: 'Is'),
+          FABBottomAppBarItem(iconData: Icons.dashboard, text: 'Bottom'),
+          FABBottomAppBarItem(iconData: Icons.info, text: 'Bar'),
+        ],
+      ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: new FloatingActionButton(
+        onPressed:(){ },
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -140,9 +159,6 @@ class _HomePageState extends State<HomePage> {
             UserPostes(context,imgListpost[1]),
             //GridView
       Container(
-        //color: Colors.brown,
-        //height: sizeheight(context)*0.,
-       // width: sizeWidth(context)*0.9,
         margin: EdgeInsets.only(left: 8,right: 8,bottom: 10 ),
         child:Column(
           children: [
@@ -215,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.all(
                         Radius.circular(30.0)),
                     image: new DecorationImage(
-                      image: ExactAssetImage('assets/postimg2.jpg'),
+                      image: ExactAssetImage('assets/postimg3.jpg'),
                       fit: BoxFit.fitHeight,
                     ),
                   ),
@@ -254,10 +270,86 @@ class _HomePageState extends State<HomePage> {
             //Schools images posts
             UserPostes(context,imgListpost[2]),
             UserPostes(context,imgListpost[3]),
+            //Listview builder
+      Container(
+        margin: EdgeInsets.only(left: 8,right: 8,bottom: 10 ),
+        //color: Colors.red,
+        child:Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text("Teacher Review",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text("View All",style: TextStyle(fontSize: 18,color: primaryColor),),
+                ),
+              ],
+            ),
+              Container(
+               // height: sizeheight(context),
+
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: teacherReviews.length-1,
+                    itemBuilder:(BuildContext,index){
+                    return  Container(
+                      margin: EdgeInsets.only(left: 8,right: 8,bottom: 8),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height:120,
+                            width: 120,
+                            decoration: new BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0)),
+                              image: new DecorationImage(
+                                image: ExactAssetImage(teacherReviews[index]['image']),
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              //mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(teacherReviews[index]['Acadmyname'],style: TextStyle(color: primaryColor),),
+                                SizedBox(height: 8),
+                                Container(
+                                    width: sizeWidth(context)/2,
+                                    //color: Colors.red,
+                                    child: Text(teacherReviews[index]['Review'],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
+                                SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Text(teacherReviews[index]['Reviewersname']),
+                                    Text("  |  "),
+                                    Text(teacherReviews[index]['Date']),
+                                  ],
+                                ),
+                              ],),
+                          )
+
+                        ],
+                      ),
+                    );
+
+                    }
+                ),
+              ),
+            //SizedBox(height: 20),
+            UserPostes(context,imgListpost[3]),
       ],
     ),
-
-
+      ),
+],
+      ),
       ),
     );
   }
