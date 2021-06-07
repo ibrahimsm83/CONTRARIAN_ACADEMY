@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergetxappsm/constans/constants.dart';
 
-Widget homeAppbar(String title,String url){
+Widget homeAppbar(String title,String path){
 
   return AppBar(
     // backgroundColor:Colors.grey[400],
@@ -26,7 +26,7 @@ Widget homeAppbar(String title,String url){
         child: CircleAvatar(
           radius: 25,
           //url
-          backgroundImage: NetworkImage(url),
+          backgroundImage: AssetImage(path),
         ),
       )
     ],
