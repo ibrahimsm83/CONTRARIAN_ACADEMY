@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:fluttergetxappsm/constans/constants.dart';
 import 'package:fluttergetxappsm/pages/homepg.dart';
+import 'package:fluttergetxappsm/pages/loginpg.dart';
 import 'package:get/get.dart';
 
 class SignUpWithMedia extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SignUpWithMediaState extends State<SignUpWithMedia> {
                       SizedBox(height: 20.0,),
                       //Email Button
                     InkWell(
-                      onTap: ()=>Get.to(HomePage()),
+                      onTap: ()=>Get.to(LoginPg()),
                       child: Container(
                         margin: EdgeInsets.only(left: btnmargsize,right:btnmargsize ),
                         padding: EdgeInsets.all(10),
@@ -64,6 +65,7 @@ class _SignUpWithMediaState extends State<SignUpWithMedia> {
                       SizedBox(height: 20.0,),
                       //facebook
                     Container(
+
                       margin: EdgeInsets.only(left: btnmargsize,right:btnmargsize ),
                       padding: EdgeInsets.all(10),
 
@@ -73,14 +75,12 @@ class _SignUpWithMediaState extends State<SignUpWithMedia> {
                             Radius.circular(30.0)),
                       ),
                       child: Container(
-
                         child: Row(
                           children: [
                             SizedBox(width: 5.0,),
                             Container(child: Image.asset('assets/fblgo.png',height: 15,width: 20,),),
                             SizedBox(width: 15.0,),
                             Container(height:25,width: 0.5,color: Colors.white,),
-
                             SizedBox(width: 15.0,),
                             Container(child: Text("CONTINUE WITH FACEBOOK ",style: TextStyle(color: Colors.white),),),
                           ],
@@ -129,6 +129,7 @@ class _SignUpWithMediaState extends State<SignUpWithMedia> {
                                             color: Colors.white, fontSize: 17),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
+                                            Get.to(HomePage());
                                            print("SignIntped");
                                           }
                                     )
