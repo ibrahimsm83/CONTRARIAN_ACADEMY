@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 //carousel images
 final List<String> imgList = [
                "assets/crasoul1.jpg",
@@ -34,34 +35,38 @@ final List<String> imgListpost = [
   "assets/postimg3.jpg",
   "assets/postimg4.jpg",
 ];
+
+
 //postes images
 class _HomePageState extends State<HomePage> {
+  bool colorva=true;
+  var value;
+
+
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
       backgroundColor:Colors.grey[200],
       appBar: homeAppbar(
         "Hi,jhon",
-        "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+        "assets/user3.jpg",
+        // "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
       ),
-      bottomNavigationBar: FABBottomAppBar(
-       // onTabSelected: _selectedTab,
+      //bottom nav bar
+      bottomNavigationBar:Bottomappbar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        onPressed: () {},
+        child: Icon(Icons.home_outlined),
+      ),
+   // );
 
-        items: [
-          FABBottomAppBarItem(iconData: Icons.menu, text: 'This'),
-          FABBottomAppBarItem(iconData: Icons.layers, text: 'Is'),
-          FABBottomAppBarItem(iconData: Icons.dashboard, text: 'Bottom'),
-          FABBottomAppBarItem(iconData: Icons.info, text: 'Bar'),
-        ],
-      ),
 
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: new FloatingActionButton(
-        onPressed:(){ },
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ),
+    //bottom nav bnar
+
 
       body: SingleChildScrollView(
         child: Column(
@@ -94,13 +99,24 @@ class _HomePageState extends State<HomePage> {
                   itemBuilder: (context, index) {
                     return  Padding(
                       padding: const EdgeInsets.only(left:4.0,right: 4.0),
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(15,8,15,8),
-                        decoration: BoxDecoration(
-                          color: primaryColor,
-                          borderRadius: BorderRadius.circular(20),
+                      child: InkWell(
+                        onTap: (){
+                          setState(() {
+                            colorva=false;
+                            value=index;
+                          });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(15,8,15,8),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blueAccent),
+                            color:isntituteNames[index]['InstituteName']=="ALL"&&colorva?primaryColor:index==value?primaryColor:Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                            child:Text(isntituteNames[index]['InstituteName'],style: TextStyle(color:isntituteNames[index]['InstituteName']=="ALL"&&colorva?Colors.white:index==value?Colors.white:primaryColor,fontWeight: FontWeight.bold),),
+
+                          //child:isntituteNames[index]['InstituteName']=="ALL"&&colorva?Text(isntituteNames[index]['InstituteName'],style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),):index==value?Text(isntituteNames[index]['InstituteName'],style: TextStyle(color:Colors.white,fontWeight: FontWeight.bold),):Text(isntituteNames[index]['InstituteName'],style: TextStyle(color:primaryColor,fontWeight: FontWeight.bold),)
                         ),
-                        child:Text(isntituteNames[index]['InstituteName'],style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                       ),
                     );
                   },
@@ -123,10 +139,10 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.only(right:3.0,left: 3.0),
                         child: Container(
                           child: CircleAvatar(
-                            radius:sizeWidth(context)*0.085,
+                            radius:sizeWidth(context)*0.082,
                             backgroundColor:Colors.white,
                             child: CircleAvatar(
-                              radius: 25,
+                              radius: 28,
                               //backgroundImage:AssetImage(usersDetails[index]['image']),
                               child: ClipRRect(
                                     borderRadius:BorderRadius.circular(200),
@@ -178,13 +194,34 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                // Container(
+                //   height:300,
+                //   width: 300,
+                //   child:GridView.builder(
+                //     itemCount: 2,
+                //     itemBuilder: (context,index){
+                //       return Card(
+                //         elevation: 10,
+                //         child: GridTile(
+                //           footer: Text("schools"),
+                //           child: Center(
+                //             child: Image.asset(imgListpost[0]),
+                //           ),
+                //         ),
+                //
+                //       );
+                //     },
+                //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                //
+                //   ) ,)
+
                 //Schools
                 Container(
-                  width: 190.00,
-                  height: 160.00,
+                  width:sizeWidth(context)*0.43,
+                  height: sizeheight(context)*0.16,
                   decoration: new BoxDecoration(
                     borderRadius: BorderRadius.all(
-                        Radius.circular(30.0)),
+                        Radius.circular(20.0)),
                     image: new DecorationImage(
                       image: ExactAssetImage('assets/postimg4.jpg'),
                       fit: BoxFit.fitHeight,
@@ -197,13 +234,14 @@ class _HomePageState extends State<HomePage> {
                         child: Text("school",style: TextStyle(color:Colors.white,fontSize: 20,fontWeight: FontWeight.bold),)),
                   ),
                 ),
+
                 //Collages
                 Container(
-                  width: 190.00,
-                  height: 160.00,
+                  width:sizeWidth(context)*0.43,
+                  height: sizeheight(context)*0.16,
                     decoration: new BoxDecoration(
                       borderRadius: BorderRadius.all(
-                          Radius.circular(30.0)),
+                          Radius.circular(20.0)),
                       image: new DecorationImage(
                         image: ExactAssetImage('assets/postimg3.jpg'),
                         fit: BoxFit.fitHeight,
@@ -225,11 +263,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 //Schools
                 Container(
-                  width: 190.00,
-                  height: 160.00,
+                  width:sizeWidth(context)*0.43,
+                  height: sizeheight(context)*0.16,
                   decoration: new BoxDecoration(
                     borderRadius: BorderRadius.all(
-                        Radius.circular(30.0)),
+                        Radius.circular(20.0)),
                     image: new DecorationImage(
                       image: ExactAssetImage('assets/postimg3.jpg'),
                       fit: BoxFit.fitHeight,
@@ -244,11 +282,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 //Collages
                 Container(
-                  width: 190.00,
-                  height: 160.00,
+                  width:sizeWidth(context)*0.43,
+                  height: sizeheight(context)*0.16,
                     decoration: new BoxDecoration(
                       borderRadius: BorderRadius.all(
-                          Radius.circular(30.0)),
+                          Radius.circular(20.0)),
                       image: new DecorationImage(
                         image: ExactAssetImage('assets/postimg4.jpg'),
                         fit: BoxFit.fitHeight,
@@ -294,6 +332,7 @@ class _HomePageState extends State<HomePage> {
 
                 child: ListView.builder(
                   shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                   itemCount: teacherReviews.length-1,
                     itemBuilder:(BuildContext,index){
                     return  Container(
@@ -302,8 +341,8 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height:120,
-                            width: 120,
+                            height:sizeheight(context)*0.14,
+                            width: sizeWidth(context)*0.3,
                             decoration: new BoxDecoration(
                               borderRadius: BorderRadius.all(
                                   Radius.circular(10.0)),

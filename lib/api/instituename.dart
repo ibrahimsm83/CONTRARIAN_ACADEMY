@@ -13,6 +13,9 @@ List<Map> isntituteNames = [
   {
     "InstituteName":"INSTITUTE"
   },
+  {
+    "InstituteName":"ACADEMIES"
+  },
 ];
 
 List<Map> usersDetails = [

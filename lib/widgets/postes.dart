@@ -65,6 +65,8 @@ Widget UserPostes(context,imgListpost){
               ),
               SizedBox(height: 15.0),
               Container(
+
+                margin: EdgeInsets.only(right: 8.0),
                 height: 2.0,
                 width: sizeWidth(context),
                 color: Colors.grey[300],
@@ -100,7 +102,9 @@ Widget UserPostes(context,imgListpost){
               ),
               SizedBox(height: 5.0),
               Container(
+                margin: EdgeInsets.only(right: 8.0),
                 height: 2.0,
+
                 width: sizeWidth(context),
                 color: Colors.grey[300],
               ),
